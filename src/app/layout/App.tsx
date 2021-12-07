@@ -11,6 +11,7 @@ const App = () => {
   const [vinyls, setVinyls] = useState<Vinyl[]>([]);
   const [selectedVinyl, setSelectedVinyl] = useState<Vinyl | undefined>(undefined);
   const [editMode, setEditMode] = useState(false);
+  const [createMode, setCreateMode] = useState(false);
 
   useEffect(() => {
     axios.get<Vinyl[]>('https://localhost:5001/api/vinyls')
@@ -46,6 +47,10 @@ const App = () => {
   const handleDeleteVinyl = (id: number) => {
     setVinyls([...vinyls.filter(x => x.id !== id)])
   }
+
+  const handleCreateMode = () => {
+    createMode ? setCreateMode(true) : setCreateMode(false)
+  }
   return (
     <>
       <Header openForm={handleFormOpen} />
@@ -60,6 +65,7 @@ const App = () => {
           closeForm={handleFormClose}
           createOrEdit={handleCreateOrEditVinyl}
           deleteVinyl={handleDeleteVinyl}
+          
         />
       </Container>
     </>

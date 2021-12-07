@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { Vinyl } from '../../../app/models/vinyl'
+import axios from 'axios';
 
 interface Props {
     closeForm: () => void;
@@ -16,8 +17,9 @@ const VinylForm = ({ closeForm, vinyl: selectedVinyl, createOrEdit }: Props) => 
     }
 
     const [vinyl, setVinyl] = useState(initialState);
-
+    
     const handleSubmit = () => {
+        axios.post('https://localhost:5001/api/vinyls', vinyl)
         createOrEdit(vinyl);
 
     }

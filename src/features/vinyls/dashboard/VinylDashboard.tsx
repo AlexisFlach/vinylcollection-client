@@ -16,6 +16,7 @@ interface Props {
     closeForm: () => void;
     createOrEdit: (vinyl: Vinyl) => void;
     deleteVinyl: (id: number) => void;
+
 }
 const VinylDashboard = ({ vinyls, selectedVinyl, selectVinyl, cancelSelectVinyl, editMode, openForm, closeForm, createOrEdit, deleteVinyl }: Props) => {
     return (
@@ -32,6 +33,7 @@ const VinylDashboard = ({ vinyls, selectedVinyl, selectVinyl, cancelSelectVinyl,
                             closeForm={closeForm}
                             vinyl={selectedVinyl}
                             createOrEdit={createOrEdit}
+                           
                         />
                     }
                 </Col>
